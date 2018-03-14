@@ -1,5 +1,10 @@
 {
 	"app": {
-		"url": "http://yoururl"
+		"url": "http://qa.riffyn.com/",
+		"admin": {
+			"username": "riffyn.test.1",
+			"password": "Quality.12345"
+		}
 	}
+
 }

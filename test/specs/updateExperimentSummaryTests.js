@@ -2,37 +2,31 @@ import LoginPage from '../pageobjects/login.page';
 import Home from '../pageobjects/home.page';
 import Experiment from '../pageobjects/experiment.page';
 import getRandomName from '../helpers/get_random_name';
+import waitForElement from '../helpers/wait_for_element';
+
 const config = require('config');
 const randomName = getRandomName();
 
-describe('Update Experiment Summary Test', function() {
 
-	it('should add summary to experiment', function() {
+describe('Update Experiment Summary Test', () => {
 
-		let isExisting;
+	before(() => {
 		LoginPage.login(config.app.admin.username, config.app.admin.password);
-		browser.waitUntil(function() {
-			isExisting = Home.libraryTable.isExisting()
-			return isExisting;
-		}, 10000, 'login takes more than 10 seconds to load the library element');
+	});
 
-		browser.url('experiments/XCS83oCNLsBFqLhcF');
-		browser.waitUntil(function() {
-			return browser.getTitle().includes('E1 | Exp 1');
-		}, 10000, 'title takes more than 10 seconds to change');
-		Home.closeBrowserSize.waitForVisible();
-		Home.closeBrowserSize.waitForEnabled();
-		browser.pause(2000);
-		Home.closeBrowserSize.click();
-		browser.pause(3000);
+	it('should add summary to experiment', () => {
+
+		browser.url('experiments/qiv4HjjrduTiiFKat');
+		browser.waitForElement(Experiment.summaryLink, config.app.waitTime, 'summaryLink');
 		Experiment.summaryLink.click();
-		browser.pause(2000);
+		browser.waitForElement(Experiment.summaryInputField, config.app.waitTime, 'summaryInputField');
 		Experiment.summaryInputField.setValue(`This is test from automation ${randomName}`);
+		browser.pause(config.app.waitTime);
 		Experiment.summaryUpdateBtn.click();
 		
-		browser.pause(2000);
+		browser.waitForElement(Experiment.summaryLink, config.app.waitTime, 'summaryLink');
 		Experiment.summaryLink.click();
-		browser.pause(2000);
+		browser.pause(config.app.waitTime);
 		let summary = Experiment.summaryInputField.getText();
 		expect(summary).equals(`This is test from automation ${randomName}`);
 

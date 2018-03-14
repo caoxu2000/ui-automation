@@ -3,45 +3,37 @@ import Home from '../pageobjects/home.page';
 import Design from '../pageobjects/design.dropdown.page';
 import getRandomName from '../helpers/get_random_name';
 import Process from '../pageobjects/process.page';
+import waitForElement from '../helpers/wait_for_element';
 
 const config = require('config');
+const randomName = getRandomName();
 
+describe('Duplicate a Process test', () => {
 
-describe('Duplicate a Process test', function() {
-
-	it('should duplicate the Process', function() {
-
+	before(() => {
 		LoginPage.login(config.app.admin.username, config.app.admin.password);
+	});
 
-		// click away the promot video and browser size suggestion modal
-		browser.pause(5000);
-		Home.closeVideoBtn.waitForExist();
-		Home.closeVideoBtn.click();
-		browser.pause(2000);
-		Home.closeBrowserSize.waitForExist();
-		Home.closeBrowserSize.click();
+	it('should duplicate the Process', () => {
 
 		browser.url('processes/NRriBeYKnv5ErrraS');
-		browser.pause(2000);
-		Home.closeBrowserSize.waitForExist();
-		Home.closeBrowserSize.click();
+		browser.waitForElement(Design.designDropDown, config.app.waitTime, 'designDropDown');
 
 		Design.designDropDown.click();
 		Design.duplicateLnk.click();
 
-		const randomName = getRandomName();
-		Process.processName.waitForVisible();
+		
+		browser.waitForElement(Process.processName, config.app.waitTime, 'processName');
 		Process.processName.setValue(`duplicate of process 4-1-4 ${randomName}`);
-		Process.processDesc.waitForVisible();
+		browser.waitForElement(Process.processDesc, config.app.waitTime, 'processDesc');
 		Process.processDesc.setValue('test description');
 		Process.duplicateProcessBtn.click();
 
-		browser.waitUntil(function() {
+		browser.waitUntil(() => {
 			return browser.getTabIds()[1] !== undefined;
-		}, 5000, 'dup process tab takes longer than 5 seconds to load');
+		}, config.app.waitTime, 'dup process tab takes longer than 5 seconds to load');
 		browser.switchTab(browser.getTabIds()[1]);
-
-		browser.waitForExist('.main-panel');
+		browser.pause(config.app.waitTime);
 		expect(browser.getUrl()).to.contain('process');
 		expect(browser.getTitle()).to.equal(`duplicate of process 4-1-4 ${randomName}`);
 		expect(Home.appTitleText.getText()).to.equal(`DUPLICATE OF PROCESS 4-1-4 ${randomName.toUpperCase()}`);

@@ -1,41 +1,69 @@
 import Page from './page';
+import waitForElement from '../helpers/wait_for_element';
+
+const config = require('config');
 
 class Experiment extends Page {
 
 	get experimentLnk() {
-		return browser.element('.process-info.experiment-menu.ready');
+		return $('.process-info.experiment-menu.ready');
 	}
 	get createExptLnk() {
-		return browser.element('.expanded-dropdown-menu-actions td:nth-child(1)');
+		return $('.expanded-dropdown-menu-actions td:nth-child(1)');
 	}
-	get measureTopNav() { return browser.element('.mode-menu.measure'); }
-	get moveToTrash() { return browser.element('li*=Move to Trash'); }
-	get confirmDeletion() { return browser.element('.purge-button'); }
-	get confirmDeleteMsg() { return browser.element('.library-purge-entity > h4'); }
-	get summaryLink() { return browser.element('.subtitle'); }
-	get summaryInputField() { return browser.element('.summary'); }
-	get summaryUpdateBtn() { return browser.element('.update-experiment-edits'); }
+	get measureTopNav() { return $('.mode-menu.measure'); }
+	get moveToTrash() { return $('a*=Move to Trash'); }
+	get confirmDeletion() { return $('.purge-button'); }
+	get confirmDeleteMsg() { return $('.library-purge-entity > h4'); }
+	get summaryLink() { return $('.subtitle'); }
+	get summaryInputField() { return $('.summary'); }
+	get summaryUpdateBtn() { return $('.update-experiment-edits'); }
 
-	get appTitle() { return browser.element('.app-title-text.subtitle'); }
-	get deleteIcon() { return browser.element('.delete-comment'); }
+	get appTitle() { return $('.app-title-text.subtitle'); }
+	get deleteIcon() { return $('.delete-comment'); }
 
-	get observationsTab() {
-		return browser.element('[data-tab-name="Observations"]');
+	get createExptBtn() { return $('.modal-dialog .action-button'); }
+
+	get exptName() { return $('.experiment-name-field'); }
+	get exptPurpose() { return $('.experiment-purpose-field'); }
+
+	get openDropDown() { return $('.mode-menu.organize'); }
+	get duplicateContextMnu() {
+		return $('a*=Duplicate');
 	}
-
-	get observationAddComment() { return browser.element('textarea.add-comment'); }
-	get saveObservationCommentBtn() { return browser.element('.save-comment'); }
-	get commentView() { return browser.element('.activity-comment.view'); }
-	get createExptBtn() { return browser.element('.action-button'); }
-
-	get exptName() { return browser.element('.experiment-name-field'); }
-	get exptPurpose() { return browser.element('.experiment-purpose-field'); }
+	get duplicateBtn() { return $('.duplicate-button'); }
 
 	runTableRow(tr_index, td_index) { 
-		return browser.element(`.resource-details-table tbody > 
+		return $(`.resource-details-table tbody > 
 			tr:nth-child(${tr_index}) > td:nth-child(${td_index})`);
 	}
-
+	get firstRunSecondCol() {
+		return $('.resource-details-table tbody > tr:nth-child(1) > td:nth-child(2)');
+	}
+	get trashLeftNav() { return $('a*=Trash'); }
+	get firstExperimentInLibrary() {
+		return $('tr.library-table-row:nth-of-type(1) > td:nth-of-type(1)');
+	}
+	get restoreContextMenu() { return $('a*=Restore'); }
+	get confirmRestoreBtn() {
+		return $('.purge-button.action-button');
+	}
+	get allLeftNav() { return $('a*=All'); }
+	get deletePermanentlyContextMenu() { return $('a*=Delete Permanently'); }
+	get confirmPermanentDeletion() {
+		return $('.default-button.action-button')
+	}
+	createExperiment(expName) {
+		browser.waitForElement(this.experimentLnk, config.app.waitTime, 'this.experimentLnk');
+		this.experimentLnk.click();
+		browser.waitForElement(this.createExptLnk, config.app.waitTime, 'this.createExptLnk');
+		this.createExptLnk.click();
+		browser.waitForElement(this.exptName, config.app.waitTime, 'this.exptName');
+		this.exptName.setValue(expName);
+		this.exptPurpose.setValue(`${expName} by test automation`);
+		this.createExptBtn.click();
+		browser.pause(config.app.waitTime);
+	}
 }
 
 export default new Experiment();

@@ -1,33 +1,33 @@
 import LoginPage from '../pageobjects/login.page';
 import Home from '../pageobjects/home.page';
 import Step from '../pageobjects/step.page';
+import createProcess from '../pageobjects/create.process.page';
+import getRandomName from '../helpers/get_random_name';
+import waitForElement from '../helpers/wait_for_element';
 
 const config = require('config');
+const randomName = getRandomName();
 
 
 describe('Create Step Test', function() {
 
+	before(() => {
+		LoginPage.login(config.app.admin.username, config.app.admin.password);
+	});
+
 	it('should create a new step in Process Flow Chart', function() {
 
-		let isExisting;
-		LoginPage.login(config.app.admin.username, config.app.admin.password);
-		browser.waitUntil(function() {
-			isExisting = Home.libraryTable.isExisting()
-			return isExisting;
-		}, 10000, 'login takes more than 10 seconds to load the library element');
+		browser.waitForElement(Home.libraryTable, config.app.waitTime, 'libraryTable');
 
-		browser.url('processes/FxDfPvotkQWc4jPen');
+		createProcess.create(randomName);
+		browser.switchTab(browser.getTabIds()[1]);
 		browser.waitUntil(function() {
-			return browser.getTitle().includes('Components and Properties');
-		}, 10000, 'title takes more than 10 seconds to change');
-		Home.closeBrowserSize.waitForVisible();
-		Home.closeBrowserSize.waitForEnabled();
-		browser.pause(600);
-		Home.closeBrowserSize.click();
+			return browser.getTitle().includes(randomName);
+		}, config.app.waitTime, `title takes more than ${config.app.waitTime} seconds to change`);
 
-		// navigate to process page and click on add new step plus sign on the upper left corner
+		// click on add new step plus sign on the upper left corner
 		Step.addNewStepLnk.click();
-		browser.pause(600);
+		browser.waitForElement(Step.newStepBox, config.app.waitTime, 'Step.newStepBox');
 		let isNewStepExisting = Step.newStepBox.isExisting();
 		expect(isNewStepExisting).to.be.true;
 

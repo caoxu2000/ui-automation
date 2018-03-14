@@ -1,6 +1,5 @@
 # Ignore these files
 .DS_Store
-*.csv
 *.log
 node_modules
 errorShots
@@ -8,3 +7,6 @@ logs
 screenshots/screen
 screenshots/diff
 .idea/
+test/actual/*.csv
+allure-results/*.*
+allure-report

@@ -1,53 +1,52 @@
 import LoginPage from '../pageobjects/login.page';
 import Home from '../pageobjects/home.page';
 import Process from '../pageobjects/process.page';
+import createProcess from '../pageobjects/create.process.page';
+import deleteProcess from '../pageobjects/delete.process.page';
 import getRandomName from '../helpers/get_random_name';
+import waitForElement from '../helpers/wait_for_element';
 
 const config = require('config');
-const randomName = getRandomName();
+const randomName = `Delete and Restore Test ${getRandomName()}`;
 
-describe('Create and then delete process from my library tests', function() {
+describe('Delete then Restore Process tests', () => {
 
-	it('should delete that process', function() {
-
+	before(() => {
 		LoginPage.login(config.app.admin.username, config.app.admin.password);
-		Home.closeVideoBtn.waitForExist();
-		browser.pause(2000);
-		Home.closeVideoBtn.click();
-		browser.waitUntil(function() {
-			return !Home.closeVideoBtn.isExisting();
-		}, 3000, 'Video overlay should go away in 3 second');
-		
-		Home.closeBrowserSize.waitForExist();
-		Home.closeBrowserSize.click();
+		createProcess.create(randomName);
+		browser.switchTab(browser.getTabIds()[0]);
+	});
 
-		browser.pause(3000);
-		browser.element(`td*=Delete and Restore Test`).rightClick();
-		browser.pause(1000);
-		Process.moveToTrashOrRestoreMnu.click();
-		browser.pause(2000);
+	it('should delete that process', () => {
+
+		browser.pause(config.app.waitTime);
+		browser.rightClick(`td*=${randomName}`);
+		browser.waitForElement(Process.moveToTrash, config.app.waitTime, 'moveToTrash');
+		Process.moveToTrash.click();
+		browser.pause(config.app.waitTime);
 		Process.purgeButton.click();
-		browser.pause(2000);
-		let isProcessRemoved = Process.deleteAndRestoreProcess.isExisting();
+		browser.pause(config.app.waitTime);
+		let isProcessRemoved = $(`td*=${randomName}`).isExisting();
 		expect(isProcessRemoved).to.be.false;
 
 	});
 
-	it('should restore the deleted process above', function() {
+	it('should restore the deleted process above', () => {
 
-		browser.pause(3000);
+		browser.waitForElement(Process.trashProcess, config.app.waitTime, 'trashProcess');
 		Process.trashProcess.click();
-		browser.pause(3000);
-		browser.element(`td*=Delete and Restore Test`).rightClick();
-		browser.pause(1000);
-		Process.moveToTrashOrRestoreMnu.click();
-		browser.pause(2000);
+		browser.pause(config.app.waitTime);
+		browser.rightClick(`td*=${randomName}`);
+		browser.waitForElement(Process.restore, config.app.waitTime, 'restore');
+		Process.restore.click();
+		browser.pause(config.app.waitTime);
 		Process.purgeButton.click();
-		browser.pause(2000);
+		browser.waitForElement(Process.allProcess, config.app.waitTime, 'allProcess');
 		Process.allProcess.click();
-		browser.pause(2000);
-		let isProcessRemoved = Process.deleteAndRestoreProcess.isExisting();
+		browser.pause(config.app.waitTime);
+		let isProcessRemoved = $(`td*=${randomName}`).isExisting();
 		expect(isProcessRemoved).to.be.true;
+		deleteProcess.delete(randomName);
 
 	});
 

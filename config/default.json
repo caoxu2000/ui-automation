@@ -2,12 +2,19 @@
 	"app": {
 		"url": "http://localhost:3000/",
 		"admin": {
-			"username": "",
-			"password": ""
+			"username": "riffyn.test.1",
+			"password": "Riffyn.12345"
 		},
 		"non_admin": {
-			"username": "",
-			"password": ""
-		}
+			"username": "riffyn.test.2",
+			"password": "Riffyn.12345"
+		},
+		"waitTime": "5000",
+		"downloadedCSV": "/Users/riffyn/Downloads/E003_Step 2_Execute.csv",
+		"expectedCSV": "test/data/expected.csv",
+		"actual": "test/actual/actual.csv",
+		"plannedCSV": "/Users/riffyn/Downloads/E001_Step 1_Plan.csv",
+		"plannedExpected": "test/data/plannedExpected.csv",
+		"plannedActual": "test/actual/plannedActual.csv"
 	}
 }

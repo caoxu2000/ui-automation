@@ -1,0 +1,18 @@
+[
+	{
+		"formula": "CONCATENATE('hello', ' world')",
+		"expected": "hello world"
+	},
+	{
+		"formula": "TRIM(' A space before and a space at the end ')",
+		"expected": "A space before and a space at the end"
+	},
+	{
+		"formula": "EXACT('Test', 'Test')",
+		"expected": "true"
+	},
+	{
+		"formula": "ISTEXT('TEST123test')",
+		"expected": "true"
+	}
+]

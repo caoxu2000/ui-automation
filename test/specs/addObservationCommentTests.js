@@ -1,46 +1,40 @@
 import LoginPage from '../pageobjects/login.page';
 import Home from '../pageobjects/home.page';
-import Experiment from '../pageobjects/experiment.page';
-import RunGroup from '../pageobjects/run.group.page';
 import getRandomName from '../helpers/get_random_name';
+import addComment from '../pageobjects/add.comment.page';
+import Comment from '../pageobjects/comment.experiment.page';
+import waitForElement from '../helpers/wait_for_element';
 
 const config = require('config');
+const expectedComment = getRandomName();
 
 
-describe('Experiment Add Observation Comment Test', function() {
+describe('Add New Experiment Observation Comment Test', () => {
 
-	it('should add a new comment to the experiment', function() {
+	before(() => {
+		LoginPage.login(config.app.admin.username, config.app.admin.password);
+		browser.pause(2000);
+	});
+
+	it('should add a new comment to the experiment', () => {
 
 		let isExisting;
-		LoginPage.login(config.app.admin.username, config.app.admin.password);
-		browser.waitUntil(function() {
-			isExisting = Home.libraryTable.isExisting()
-			return isExisting;
-		}, 10000, 'login takes more than 10 seconds to load the library element');
 
 		browser.url('experiments/tbag7H5YvaYLQXXvp');
-		browser.waitUntil(function() {
+		browser.waitUntil(() => {
 			return browser.getTitle() === 'E3 | 3 - One step uploaded';
-		}, 10000, 'title takes more than 10 seconds to change');
-		Home.closeBrowserSize.waitForVisible();
-		Home.closeBrowserSize.waitForEnabled();
-		browser.pause(600);
-		Home.closeBrowserSize.click();
+		}, config.app.waitTime, 'title takes more than 5 seconds to change');
+		browser.waitForElement(Comment.sideBar, config.app.waitTime, 'sideBar');
 
-		browser.waitUntil(function() {
-			return Experiment.runTableRow(1, 2).isExisting();
-		}, 10000, 'first run table row takes more than 10 seconds to load');
-		
-		let expectedComment = getRandomName();
-		Experiment.observationsTab.click();
-		Experiment.observationAddComment.setValue(expectedComment);
-		Experiment.saveObservationCommentBtn.click();
+		addComment.add(expectedComment);
 
-		let actualComment = Experiment.commentView.getText();
+		browser.waitForElement(Comment.firstCommentView, config.app.waitTime, 'firstCommentView');
+		let actualComment = Comment.firstCommentView.getText();
 		expect(actualComment).equals(expectedComment);
-
-		// tear down the test comment for the next run
-		Experiment.deleteIcon.click();
+		browser.waitForElement(Comment.deleteComment, config.app.waitTime, 'deleteComment');
+		Comment.deleteComment.click();
+		let isGone = !Comment.firstCommentView.isExisting();
+		expect(isGone).to.be.true;
 
 	});
 

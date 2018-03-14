@@ -38,14 +38,26 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-    capabilities: [{
-        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-        // grid with only 5 firefox instances available you can make sure that not more than
-        // 5 instances get started at a time.
+      capabilities: [
+      {
+          // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+          // grid with only 5 firefox instances available you can make sure that not more than
+          // 5 instances get started at a time.
+          // "start-maximized": true,
         maxInstances: 1,
         //
-        browserName: 'chrome'
-    }],
+        browserName: 'chrome',
+        chromeOptions: {
+          args: [
+            '--disable-web-security',
+            '--allow-http-background-page',
+            '--allow-running-insecure-content',
+            '--allow-insecure-localhost',
+            '--disable-infobars'
+          ]
+        }
+      }
+    ],
     //
     // ===================
     // Test Configurations
@@ -58,7 +70,7 @@ exports.config = {
     sync: true,
     //
     // Level of logging verbosity: silent | verbose | command | data | result | error
-    logLevel: 'error',
+    logLevel: 'verbose',
     //
     // Enables colors for log output.
     coloredLogs: true,
@@ -80,7 +92,7 @@ exports.config = {
     baseUrl: require('config').app.url,
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 5000,
+    waitforTimeout: 10000,
     //
     // Default timeout in milliseconds for request
     // if Selenium Grid doesn't send response
@@ -128,15 +140,19 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: http://webdriver.io/guide/reporters/dot.html
-    reporters: ['spec'],
-    
+    reporters: ['allure'],
+    reporterOptions: {
+        allure: {
+            outputDir: 'allure-results'
+        }
+    },
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
         compilers: ['js:./node_modules/babel-core/register'],
-        timeout: 60000
+        timeout: 900000
     },
     //
     // =====
@@ -170,10 +186,14 @@ exports.config = {
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
     before: function () {
-      var chai = require('chai');
+      const chai = require('chai');
       chai.Should();
       chai.use(require('chai-as-promised'));
       expect = chai.expect;
+      // don't know why the following code won't work.  Todo: will look into it further when there is a down time
+      // const path = require('path');
+      // const LoginPage = require(path.join(__dirname, 'test/pageobjects/login.page'));
+      // LoginPage.login(require('config').app.admin.username, require('config').app.admin.password);
     },
     /**
      * Runs before a WebdriverIO command gets executed.
@@ -188,14 +208,17 @@ exports.config = {
      * @param {Object} suite suite details
      */
     beforeSuite: function () {
-      browser.windowHandleSize({ width: 1440, height: 800}); // top panel test use height: 1400
+      browser.windowHandleSize({ width: 2048, height: 1536 }); // top panel test use height: 1400
       browser.url(this.baseUrl);
     },
     /**
      * Function to be executed before a test (in Mocha/Jasmine) or a step (in Cucumber) starts.
      * @param {Object} test test details
      */
-    // beforeTest: function (test) {
+    // beforeTest: function () { 
+    //   const path = require('path');
+    //   const LoginPage = require(path.join(__dirname, 'test/pageobjects/login.page'));
+    //   LoginPage.login(require('config').app.admin.username, require('config').app.admin.password);
     // },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling

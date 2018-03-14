@@ -3,46 +3,36 @@ import Home from '../pageobjects/home.page';
 import Experiment from '../pageobjects/experiment.page';
 import Resource from '../pageobjects/resource.page';
 import getRandomName from '../helpers/get_random_name';
+import createExperiment from '../pageobjects/create.experiment.page';
+import createRunOneAtATime from '../pageobjects/create.run.one.page';
+import waitForElement from '../helpers/wait_for_element';
 
 const config = require('config');
+const name = getRandomName();
+const testName = 'Experiment Assign Resource Test';
 
+describe(testName, () => {
 
-describe('Experiment Assign Resource Test', function() {
-
-	it('should assign a new resource to an experiment', function() {
-
-		let isExisting;
+	before(() => {
 		LoginPage.login(config.app.admin.username, config.app.admin.password);
-		browser.waitUntil(function() {
-			isExisting = Home.libraryTable.isExisting()
-			return isExisting;
-		}, 10000, 'login takes more than 10 seconds to load the library element');
+		createExperiment.create(name, testName);
+		createRunOneAtATime.create(name);
+	});
 
-		browser.url('experiments/XCS83oCNLsBFqLhcF');
-		browser.waitUntil(function() {
-			return browser.getTitle() === 'E1 | Exp 1';
-		}, 10000, 'title takes more than 10 seconds to change');
-		Home.closeBrowserSize.waitForVisible();
-		Home.closeBrowserSize.waitForEnabled();
-		browser.pause(600);
-		Home.closeBrowserSize.click();
+	it('should assign a new resource to an experiment', () => {
 
-		browser.waitUntil(function() {
-			return Experiment.runTableRow(1, 2).isExisting();
-		}, 10000, 'first run table row takes more than 10 seconds to load');
-
-		Resource.assignResourceLnk.waitForExist();
+		browser.waitForElement(Resource.assignResourceLnk, config.app.waitTime, 'assignResourceLnk');
 		Resource.assignResourceLnk.click();
-		browser.pause(3000);
+		browser.waitForElement(Resource.createNewResource, config.app.waitTime, 'createNewResource');
 		Resource.createNewResource.click();
 		let expectedResourceName = getRandomName();
 		Resource.resourceName.waitForExist();
 		Resource.resourceName.waitForEnabled();
 		Resource.resourceName.setValue(expectedResourceName);
 		Resource.createResourceBtn.click();
-		browser.pause(2000);
+		browser.waitForElement(Resource.assignResourceBtn, config.app.waitTime, 'assignResourceBtn');
 		Resource.assignResourceBtn.click();
-		browser.pause(2000);
+		browser.waitForElement(Resource.resourceValue, config.app.waitTime, 'resourceValue');
 		let actualResourceName = Resource.resourceValue.getValue();
 		expect(actualResourceName).equals(expectedResourceName);
 

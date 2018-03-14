@@ -1,0 +1,14 @@
+[
+	{
+		"formula": "MAX(2345.5, 345, 24)",
+		"expected": "2345.5"
+	},
+	{
+		"formula": "ABS(-23456)",
+		"expected": "23456"
+	},
+	{
+		"formula": "AVERAGE(23,456,76,34,56)",
+		"expected": "129"
+	}
+]

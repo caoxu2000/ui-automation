@@ -1,0 +1,10 @@
+[
+	{
+		"formula": "NOW()",
+		"expected": "2018-01-16 14:44:49 // this is just an example"
+	},
+	{
+		"formula": "TODAY()",
+		"expected": "2018-01-16 14:45:44 // this is just an example"
+	}
+]

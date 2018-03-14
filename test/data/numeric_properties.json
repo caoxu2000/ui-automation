@@ -1,0 +1,82 @@
+[
+	{
+		"formula": "MAX(2345.9, 345, 24)",
+		"expected": "2345.9"
+	},
+	{
+		"formula": "ABS(-23456)",
+		"expected": "23456"
+	},
+	{
+		"formula": "ACOSH(10)",
+		"expected": "2.9932"
+	},
+	{
+		"formula": "ACOS(0.5)",
+		"expected": "1.0472"
+	},
+	{
+		"formula": "ACOT(2)",
+		"expected": "0.4636"
+	},
+	{
+		"formula": "AVERAGE(23,456,76,34,56)",
+		"expected": "129"
+	},
+	{
+		"formula": "PI()",
+		"expected": "3.1416"
+	},
+	{
+		"formula": "EXP(2)",
+		"expected": "7.3891"
+	},
+	{
+		"formula": "LOG(8,2)",
+		"expected": "3"
+	},
+	{
+		"formula": "SQRT(8)",
+		"expected": "2.8284"
+	},
+	{
+		"formula": "NORMDIST(42,12,34,TRUE)",
+		"expected": "0.8112"
+	},
+	{
+		"formula": "POWER(98.6,3.2)",
+		"expected": "2.4011e+6"
+	},
+	{
+		"formula": "SIN(RADIANS(30))",
+		"expected": "0.5"
+	},
+	{
+		"formula": "SKEW(3,4,5,3,8,2,12)",
+		"expected": "1.3672"
+	},
+	{
+		"formula": "AVEDEV(3,6,5,7,8)",
+		"expected": "1.44"
+	},
+	{
+		"formula": "SUM(1234,56,-90,34567)",
+		"expected": "35767"
+	},
+	{
+		"formula": "TAN(0.785)",
+		"expected": "0.9992"
+	},
+	{
+		"formula": "STANDARDIZE(42,40,1.5)",
+		"expected": "1.3333"
+	},
+	{
+		"formula": "ROUNDUP(3.14159, 3)",
+		"expected": "3.142"
+	},
+	{
+		"formula": "DAY(DATE(2018,1,15))",
+		"expected": "15"
+	}
+]

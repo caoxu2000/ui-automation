@@ -7,7 +7,7 @@
 
 # To Start
 
-- $ git clone the repo: https://github.com/caoxu2000/ui-automation.git
+- $ git clone the repo: https://github.com/RiffynInc/qa-ui-functional.git
 - $ cd qa-ui-functional
 - $ npm install
 - $ npm run eng01 // run all the UI function tests

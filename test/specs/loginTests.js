@@ -1,21 +1,19 @@
 import LoginPage from '../pageobjects/login.page';
 import Home from '../pageobjects/home.page';
-
+import waitForElement from '../helpers/wait_for_element';
 const config = require('config');
 
 
-describe('Login Test', function() {
+describe('Login Test', () => {
 
-	it('should login and see library table on home page', function() {
-
-		let isExisting;
+	before(() => {
 		LoginPage.login(config.app.admin.username, config.app.admin.password);
-		browser.waitUntil(function() {
-			isExisting = Home.libraryTable.isExisting()
-			return isExisting;
-		}, 3000, 'login takes more than 10 seconds to load the library element');
+	});
 
-		expect(isExisting).to.be.true;
+	it('should login and see library table on home page', () => {
+
+		browser.waitForElement(Home.libraryTable, config.app.waitTime, 'libraryTable');
+
 		expect(browser.getUrl()).to.contain('library/processes');
 		expect(browser.getTitle()).to.equal('Process Library');
 		expect(Home.appTitleText.getText()).to.equal('PROCESS LIBRARY');
