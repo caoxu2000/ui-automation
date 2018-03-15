@@ -24,7 +24,8 @@ class Experiment extends Page {
 
 	get createExptBtn() { return $('.modal-dialog .action-button'); }
 
-	get exptName() { return $('.experiment-name-field'); }
+	get exptName() { return $('.experiment-name-field'); } // remember to change this back when dev fixes the css name value
+	get arithmaticExptName() { return $('.process-name-field'); }
 	get exptPurpose() { return $('.experiment-purpose-field'); }
 
 	get openDropDown() { return $('.mode-menu.organize'); }
@@ -49,6 +50,7 @@ class Experiment extends Page {
 		return $('.purge-button.action-button');
 	}
 	get allLeftNav() { return $('a*=All'); }
+	get arithmaticExpRow() { return $('td*=arithmetic'); }
 	get deletePermanentlyContextMenu() { return $('a*=Delete Permanently'); }
 	get confirmPermanentDeletion() {
 		return $('.default-button.action-button')
@@ -62,7 +64,7 @@ class Experiment extends Page {
 		this.exptName.setValue(expName);
 		this.exptPurpose.setValue(`${expName} by test automation`);
 		this.createExptBtn.click();
-		browser.pause(config.app.waitTime);
+		browser.pause(config.app.downloadWaitTime);
 	}
 }
 

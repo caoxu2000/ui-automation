@@ -9,11 +9,13 @@ class LoginPage extends Page {
 	get password() { return $('input[name="password"]'); }
 	get signInBtn() { return $('button[type="submit"]'); }
 	get userInfo() {
-		return $('.context-items > li:nth-child(3) > a:nth-child(1)');
+		return $('a*=Sign Out');
 	}
 
 	get logoutLnk() { return $('.user-info'); }
-
+	get contextMenu() {
+		return $('.context-items.dropdown-menu.menu-with-title.normal');
+	}
 	login(username, password) {
 		browser.waitForElement(this.username, config.app.waitTime, 'username');
 		this.username.setValue(username);
@@ -24,7 +26,7 @@ class LoginPage extends Page {
 	}
 
 	logout() {
-		browser.waitForElement(this.logoutLnk, config.app.waitTime, 'logoutLnk');
+		browser.pause(config.app.waitTime);
 		this.logoutLnk.click();
 		browser.waitForElement(this.userInfo, config.app.waitTime, 'userInfo');
 		this.userInfo.click();

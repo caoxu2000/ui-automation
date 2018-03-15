@@ -10,13 +10,13 @@ const randomName1 = getRandomName();
 const randomName2 = getRandomName();
 
 
-describe('Rename process name test', () => {
+describe('Update process name test', () => {
 
 	before(() => {
 		LoginPage.login(config.app.admin.username, config.app.admin.password);
 	});
 
-	it('should rename the process name', () => {
+	it('should update the process name', () => {
 
     browser.keys(['Enter']);
 		browser.pause(config.app.waitTime);
@@ -32,7 +32,7 @@ describe('Rename process name test', () => {
 		browser.waitForElement(Process.processDesc, config.app.waitTime, 'processDesc');
 		Process.processDesc.clearElement();
 		Process.processDesc.setValue('test description');
-		browser.pause(config.app.waitTime);
+		browser.pause(config.app.downloadWaitTime);
 		Process.updateProcessNameBtn.click();
 		browser.pause(config.app.waitTime);
 		let isProcessTitleChanged = Process.processTD.getText().includes(randomName2);

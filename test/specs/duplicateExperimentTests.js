@@ -19,21 +19,21 @@ describe('Duplicate Experiment test', () => {
 	it('should duplicate the Experiment', () => {
 
 		browser.url('library/experiments');
-		browser.pause(config.app.waitTime);
-		browser.element(`td*=arithmetic`).rightClick();
-		browser.waitForElement(Experiment.duplicateContextMnu, config.app.waitTime, 'duplicateContextMnu');
+		browser.pause(config.app.downloadWaitTime);
+		Experiment.arithmaticExpRow.rightClick();
+		browser.waitForElement(Experiment.duplicateContextMnu, config.app.downloadWaitTime, 'duplicateContextMnu');
 		Experiment.duplicateContextMnu.click();
 
 		
-		browser.waitForElement($('.process-name-field'), config.app.waitTime, 'experiment name field');
-		$('.process-name-field').setValue(`arithmetic ${randomName}`);
+		browser.waitForElement(Experiment.arithmaticExptName, config.app.downloadWaitTime, 'experiment name field');
+		Experiment.arithmaticExptName.setValue(`arithmetic ${randomName}`);
 		Experiment.duplicateBtn.click();
 
 		browser.waitUntil(() => {
 			return browser.getTabIds()[2] !== undefined;
 		}, config.app.waitTime, `dup process tab takes longer than ${config.app.waitTime} seconds to load`);
 		browser.switchTab(browser.getTabIds()[2]);
-		browser.pause(config.app.waitTime);
+		browser.pause(config.app.downloadWaitTime);
 		expect(browser.getUrl()).to.contain('experiments');
 		let isDuplicated = browser.getTitle().includes(`arithmetic ${randomName}`);
 		console.log(browser.getTitle());

@@ -10,7 +10,7 @@ class Process extends Page {
 	get createProcessBtn() { return $('.update-process'); }
 	get updateProcessNameBtn() { return $('.default-button.action-button'); }
 	get duplicateProcessBtn() { return $('.duplicate-process'); }
-	get processNameOnLibraryRow() {
+	get firstProcessRowInLibrary() {
 		return $('tr.library-table-row:nth-of-type(1) > td:nth-of-type(1)');
 	}
 	

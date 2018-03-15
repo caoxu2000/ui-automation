@@ -24,7 +24,7 @@ describe('Date/Time Manipulation Test', () => {
 		createExperiment.create(getRandomName(), testName);
 		ResourceToolbar.createNewRunInput.setValue('test1');
 		browser.keys(['Enter'])
-		browser.waitForElement(Run.modifyRun, config.app.waitTime, 'libraryTable');
+		browser.waitForElement(Run.modifyRun, config.app.downloadWaitTime, 'libraryTable');
 		addProperty.add(propertyName);
 
 	});
@@ -32,23 +32,24 @@ describe('Date/Time Manipulation Test', () => {
 	it('should output date/time correctly', () => {
 
 		Run.actualRun.click();
-		browser.waitForElement(Experiment.runTableRow(1, 2), config.app.waitTime, 'runTableRow');
+		browser.waitForElement(Experiment.runTableRow(1, 2), config.app.downloadWaitTime, 'runTableRow');
 		// test resource column that is date data type
 		expected_date.forEach(each => {
 			for (let i = 1; i <= 5; i++) {
 				browser.keys(['ArrowRight']);
 			}
 			Run.dateResource.rightClick();
-			browser.waitForElement(Run.formulaEditor, config.app.waitTime, 'libraryTable');
+			browser.waitForElement(Run.formulaEditor, config.app.downloadWaitTime, 'libraryTable');
 			Run.formulaEditor.click();
-			browser.waitForElement(Run.formulaInput, config.app.waitTime, 'formulaInput');
+			browser.waitForElement(Run.formulaInput, config.app.downloadWaitTime, 'formulaInput');
 			Run.formulaInput.setValue(each.formula);
+			browser.pause(config.app.downloadWaitTime);
 			Run.updateFormulaBtn.click();
-			browser.waitForElement(Run.calculationBtn, config.app.waitTime, 'calculationBtn');
+			browser.waitForElement(Run.calculationBtn, config.app.downloadWaitTime, 'calculationBtn');
 			Run.calculationBtn.click();
-			browser.pause(config.app.waitTime);
+			browser.pause(config.app.downloadWaitTime);
 			let actual = Run.calculatedResultCell.getText();
-			let expected = moment().format('YYYY-MM-DD kk:mm:');
+			let expected = moment().format('YYYY-MM-DD kk:');
 			let hasValue = actual.includes(expected);
 			if (!hasValue) {
 				console.log(`formula is ${each.formula}`);

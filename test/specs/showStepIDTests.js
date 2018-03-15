@@ -19,6 +19,7 @@ describe('Show Step ID Test', () => {
 		browser.waitForElement(Step.resourceSummaryTable, config.app.waitTime, 'resourceSummaryTable');
 		Step.firstStepBox.rightClick();
 		Step.showStepID.click();
+		browser.pause(config.app.waitTime);
 		stepLabel = Step.stepLabel;
 		doesStepShowID = stepLabel[0].getText() === "S1" && stepLabel[1].getText() === "S2";
 		expect(doesStepShowID).to.be.true;

@@ -12,6 +12,10 @@ class Step extends Page {
 		return $('[data-name="Step 1"]');
 	}
 
+	get firstStepBoxOrder() {
+		return $('[data-name="Step 1"] .step-order-label');
+	}
+
 	get secondStepBox() {
 		return $('[data-name="Step 2"]');
 	}

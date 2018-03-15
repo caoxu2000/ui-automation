@@ -23,7 +23,7 @@ describe('String Manipulation Test', () => {
 		createExperiment.create(randomName, testName);
 		ResourceToolbar.createNewRunInput.setValue('test1');
 		browser.keys(['Enter'])
-		browser.pause(config.app.waitTime);
+		browser.pause(config.app.downloadWaitTime);
 		addProperty.add(propertyName);
 
 	});
@@ -31,24 +31,24 @@ describe('String Manipulation Test', () => {
 	it('should parse string correctly', () => {
 
 		Run.actualRun.click();
-		browser.waitForElement(Experiment.runTableRow(1, 2), config.app.waitTime, 'runTableRow');
+		browser.waitForElement(Experiment.runTableRow(1, 2), config.app.downloadWaitTime, 'runTableRow');
 
 		// test resource column that is text/string data type
 		expected_txt.forEach(each => {
 			for (let i = 1; i <= 5; i++) {
 				browser.keys(['ArrowRight']);
 			}
-			browser.waitForElement(Run.textResource, config.app.waitTime, 'textResource');
+			browser.waitForElement(Run.textResource, config.app.downloadWaitTime, 'textResource');
 			Run.textResource.rightClick();
-			browser.waitForElement(Run.formulaEditor, config.app.waitTime, 'formulaEditor');
+			browser.waitForElement(Run.formulaEditor, config.app.downloadWaitTime, 'formulaEditor');
 			Run.formulaEditor.click();
-			browser.waitForElement(Run.formulaInput, config.app.waitTime, 'formulaInput');
+			browser.waitForElement(Run.formulaInput, config.app.downloadWaitTime, 'formulaInput');
 			Run.formulaInput.setValue(each.formula);
-			browser.pause(config.app.waitTime);
+			browser.pause(config.app.downloadWaitTime);
 			Run.updateFormulaBtn.click();
-			browser.pause(config.app.waitTime);
+			browser.pause(config.app.downloadWaitTime);
 			Run.calculationBtn.click();
-			browser.pause(config.app.waitTime);
+			browser.pause(config.app.downloadWaitTime);
 			let actual = Run.calculatedResultCell.getText();
 			let hasValue = each.expected.indexOf(actual) !== -1;
 			if (!hasValue) {

@@ -42,7 +42,7 @@ describe('Arithmetic Manipulation Test', () => {
 			Run.formulaEditor.click();
 			browser.waitForElement(Run.formulaInput, config.app.waitTime, 'formulaInput');
 			Run.formulaInput.setValue(each.formula);
-			browser.waitForElement(Run.updateFormulaBtn, config.app.waitTime, 'updateFormulaBtn');
+			browser.pause(1000);
 			Run.updateFormulaBtn.click();
 			browser.waitForElement(Run.calculationBtn, config.app.waitTime, 'calculationBtn');
 			Run.calculationBtn.click();

@@ -10,6 +10,8 @@ import waitForElement from '../helpers/wait_for_element';
 const config = require('config');
 const name = getRandomName();
 const testName = 'Experiment Assign Resource Test';
+let expectedResourceName = getRandomName();
+
 
 describe(testName, () => {
 
@@ -25,14 +27,13 @@ describe(testName, () => {
 		Resource.assignResourceLnk.click();
 		browser.waitForElement(Resource.createNewResource, config.app.waitTime, 'createNewResource');
 		Resource.createNewResource.click();
-		let expectedResourceName = getRandomName();
-		Resource.resourceName.waitForExist();
+		browser.waitForElement(Resource.resourceName, config.app.waitTime, 'resourceName');
 		Resource.resourceName.waitForEnabled();
 		Resource.resourceName.setValue(expectedResourceName);
 		Resource.createResourceBtn.click();
-		browser.waitForElement(Resource.assignResourceBtn, config.app.waitTime, 'assignResourceBtn');
+		browser.pause(config.app.waitTime);
 		Resource.assignResourceBtn.click();
-		browser.waitForElement(Resource.resourceValue, config.app.waitTime, 'resourceValue');
+		browser.pause(config.app.waitTime);
 		let actualResourceName = Resource.resourceValue.getValue();
 		expect(actualResourceName).equals(expectedResourceName);
 

@@ -23,7 +23,7 @@ describe('Export Single Valued Data For Group Test', () => {
 		RunGroup.exportSingleValuedData.click();
 		browser.pause(config.app.waitTime);
 		RunGroup.confirmBtn.click();
-		browser.pause(config.app.waitTime);
+		browser.pause(config.app.downloadWaitTime);
 
 		let match = null;
 		let expectedCSV = fs.readFileSync(config.app.expectedCSV, 'utf8');

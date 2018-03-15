@@ -26,7 +26,7 @@ describe('Export Planned Values For Groups Test', () => {
 		RunGroup.plannedMultipleValues.click();
 		browser.pause(config.app.waitTime);
 		RunGroup.confirmBtn.click();
-		browser.pause(config.app.waitTime);
+		browser.pause(config.app.downloadWaitTime);
 
 		let match = null;
 		let expectedCSV = fs.readFileSync(config.app.plannedExpected, 'utf8');

@@ -16,8 +16,8 @@ describe('Add/remove tag of a process test', function() {
 
 	it('should add the tag only to that the selected process', function() {
 
-		browser.waitForElement(Process.processNameOnLibraryRow, config.app.waitTime, 'processNameOnLibraryRow1');
-		Process.processNameOnLibraryRow.rightClick();
+		browser.waitForElement(Process.firstProcessRowInLibrary, config.app.waitTime, 'firstProcessRowInLibrary1');
+		Process.firstProcessRowInLibrary.rightClick();
 		browser.waitForElement(Process.addTagLinkContextMnu, config.app.waitTime, 'addTagLinkContextMnu1');
 		Process.addTagLinkContextMnu.click();
 		browser.keys(['Clear']);
@@ -30,16 +30,17 @@ describe('Add/remove tag of a process test', function() {
 		expect(Process.tagPill.isExisting()).to.be.true;
 
 		// remove tag added from above
-		browser.waitForElement(Process.processNameOnLibraryRow, config.app.waitTime, 'processNameOnLibraryRow2');
-		Process.processNameOnLibraryRow.rightClick();
+		Process.tagPill.click();
+		browser.waitForElement(Process.firstProcessRowInLibrary, config.app.waitTime, 'firstProcessRowInLibrary2');
+		Process.firstProcessRowInLibrary.rightClick();
 		browser.waitForElement(Process.addTagLinkContextMnu, config.app.waitTime, 'addTagLinkContextMnu2');
 		Process.addTagLinkContextMnu.click();
-		browser.waitForElement(Process.removeTag, config.app.waitTime, 'removeTag');
+		browser.pause(config.app.waitTime);
 		Process.removeTag.click();
 		browser.waitForElement(Process.tagUpdateBtn, config.app.waitTime, 'tagUpdateBtn');
 		Process.tagUpdateBtn.click();
-		browser.waitForElement(ContextMenu.tagsTitle, config.app.waitTime, 'tagsTitle');
-		expect($('.tag-pill').isExisting()).to.be.false;
+		browser.pause(config.app.waitTime);
+		expect(Process.tagPill.isExisting()).to.be.false;
 
 	});
 

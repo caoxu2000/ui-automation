@@ -6,7 +6,7 @@ import getRandomName from '../helpers/get_random_name';
 import waitForElement from '../helpers/wait_for_element';
 
 const config = require('config');
-
+const randomName = getRandomName();
 
 describe('Add/remove tag of an experiment test', function() {
 
@@ -22,23 +22,24 @@ describe('Add/remove tag of an experiment test', function() {
 		ContextMenu.addOrRemove.click();
 		browser.keys(['Clear']);
 		browser.waitForElement(ContextMenu.tagName, config.app.waitTime, 'tagName');
-		ContextMenu.tagName.setValue(getRandomName());
+		ContextMenu.tagName.setValue(randomName);
 		browser.keys(['Enter']);
 		browser.pause(config.app.waitTime);
 		ContextMenu.tagUpdateBtn.click();
 		browser.pause(config.app.waitTime);
 		expect(ContextMenu.tagPill.isExisting()).to.be.true;
 
+		ContextMenu.tagPill.click();
 		browser.pause(config.app.waitTime);
 		Experiment.firstExperimentInLibrary.rightClick();
 		browser.waitForElement(ContextMenu.addOrRemove, config.app.waitTime, 'addOrRemove');
 		ContextMenu.addOrRemove.click();
-		browser.waitForElement(ContextMenu.removeTag, config.app.waitTime, 'removeTag');
+		browser.pause(config.app.waitTime);
 		ContextMenu.removeTag.click();
 		browser.pause(config.app.waitTime);
 		ContextMenu.tagUpdateBtn.click();
 		browser.pause(config.app.waitTime);
-		expect($('.tag-pill').isExisting()).to.be.false;
+		expect(ContextMenu.tagPill.isExisting()).to.be.false;
 
 	});
 

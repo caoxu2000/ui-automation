@@ -16,18 +16,14 @@ describe('Create/Share/Remove process from my library tests', () => {
 		createProcess.create(randomName);
 		browser.switchTab(browser.getTabIds()[1]);
 		browser.pause(config.app.waitTime);
+		expect(browser.getUrl()).to.contain('process');
+		browser.waitForElement(Home.appTitleText, config.app.waitTime, 'Home.appTitleText');
+		Home.appTitleText.waitForEnabled();
+		expect(Home.appTitleText.getText()).to.equal(randomName);
 	});
 
 	after(() => {
 		deleteProcess.delete(randomName);
-	});
-
-	it('should create a new process', () => {
-
-		expect(browser.getUrl()).to.contain('process');
-		expect(browser.getTitle()).to.equal(randomName);
-		expect(Home.appTitleText.getText()).to.equal(randomName);
-
 	});
 
 	it('should share it and give admin role to another user', () => {
