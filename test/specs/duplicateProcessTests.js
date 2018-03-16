@@ -17,7 +17,7 @@ describe('Duplicate a Process test', () => {
 	it('should duplicate the Process', () => {
 
 		browser.url('processes/NRriBeYKnv5ErrraS');
-		browser.waitForElement(Design.designDropDown, config.app.waitTime, 'designDropDown');
+		browser.waitForElement(Design.designDropDown, config.app.downloadWaitTime, 'designDropDown');
 
 		Design.designDropDown.click();
 		Design.duplicateLnk.click();
@@ -31,9 +31,9 @@ describe('Duplicate a Process test', () => {
 
 		browser.waitUntil(() => {
 			return browser.getTabIds()[1] !== undefined;
-		}, config.app.waitTime, 'dup process tab takes longer than 5 seconds to load');
+		}, config.app.downloadWaitTime, 'dup process tab takes longer than 5 seconds to load');
 		browser.switchTab(browser.getTabIds()[1]);
-		browser.pause(config.app.waitTime);
+		browser.pause(config.app.downloadWaitTime);
 		expect(browser.getUrl()).to.contain('process');
 		expect(browser.getTitle()).to.equal(`duplicate of process 4-1-4 ${randomName}`);
 		expect(Home.appTitleText.getText()).to.equal(`DUPLICATE OF PROCESS 4-1-4 ${randomName.toUpperCase()}`);

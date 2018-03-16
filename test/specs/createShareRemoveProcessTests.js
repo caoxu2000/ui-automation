@@ -41,9 +41,9 @@ describe('Create/Share/Remove process from my library tests', () => {
 		Process.userRoleDropDown.selectByValue('admin');
 		browser.waitForElement(Process.shareBtn, config.app.waitTime, 'shareBtn');
 		Process.shareBtn.click();
-		browser.pause(config.app.waitTime);
+		browser.pause(config.app.downloadWaitTime);
 		Process.confirmationBtn.click();
-		browser.pause(config.app.waitTime);
+		browser.pause(config.app.downloadWaitTime);
 		browser.element(`td*=${randomName}`).rightClick();
 		browser.waitForElement(Process.shareProcessMnu, config.app.waitTime, 'shareProcessMnu');
 		Process.shareProcessMnu.click();
