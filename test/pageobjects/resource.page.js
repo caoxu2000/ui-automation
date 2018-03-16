@@ -37,7 +37,13 @@ class Resource extends Page {
 	get assignResourceBtn() {
 		return $('.assign-resource');
 	}
-
+	get addSelectedComponent() {
+		return $('.resource-actions .add-component');
+	}
+	get componentName() { return $('.component-name'); }
+	get addComponentIcon() {
+		return $('.resource-input-summary .resource-header .toolbar-actions .add-component');
+	}
 	get resourceSearch() { return $('#search'); }
 	get firstResource() { return $('ul.-autocomplete-list > li'); }
 	get addResourceTypeToStep() { return $('.default-button.add-to-activity'); }
