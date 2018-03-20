@@ -37,12 +37,21 @@ class Resource extends Page {
 	get assignResourceBtn() {
 		return $('.assign-resource');
 	}
-	get addSelectedComponent() {
+	get addComponent() {
 		return $('.resource-actions .add-component');
+	}
+	get changeComponent() {
+		return $('.resource-actions .change-component');
 	}
 	get componentName() { return $('.component-name'); }
 	get addComponentIcon() {
 		return $('.resource-input-summary .resource-header .toolbar-actions .add-component');
+	}
+	get changeComponentIcon() {
+		return $('.resource-input-summary .resource-component .toolbar-actions .change-component');
+	}
+	get propagateDownstreamIcon() {
+		return $('.resource-input-summary .resource-component .toolbar-actions .propagate-downstream');
 	}
 	get resourceSearch() { return $('#search'); }
 	get firstResource() { return $('ul.-autocomplete-list > li'); }
@@ -60,6 +69,9 @@ class Resource extends Page {
 	get inputFirstResource() { return $('.resource-input-summary table.resource-summary-set tr:first-child td.resource-header-name:first-child'); }
 	get inputSecondResource() { return $('.resource-input-summary table.resource-summary-set tr:nth-child(2) td.resource-header-name:first-child'); }
 	get outputSecondResource() { return $('.resource-output-summary table.resource-summary-set tr:nth-child(2) td.resource-header-name:first-child'); }
+	get outputComponent() {
+		return $('.resource-output-summary table.resource-summary-set tr.resource-component .component-name');
+	}
 	get secondResourceRemoveIcon() {
 		return $('.resource-output-summary tbody.resource-definition tr:nth-child(2) td:nth-child(2) div.toolbar-actions button.remove-resource');
 	}

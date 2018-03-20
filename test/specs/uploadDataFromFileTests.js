@@ -19,19 +19,19 @@ xdescribe('Upload data from file Test', () => {
 
 	it('should upload the file and run rule through it', () => {
 
-		browser.url('experiments/3u8ubELYAj4ZnjgH8');
+		browser.url('experiments/qiv4HjjrduTiiFKat');
 		browser.waitForElement(Experiment.runTableRow(1, 2), config.app.waitTime, 'runTableRow');
 		console.log(filePath);
 		browser.pause(config.app.waitTime);
 
-		// Run.uploadIcon.click();
-		// browser.pause(config.app.waitTime);
+		Run.uploadIcon.click();
+		browser.pause(config.app.waitTime);
 		Run.fileUploadInput.uploadFile(filePath);
 		browser.pause(config.app.waitTime);
 
 	});
 
-	it('should unrequire file upload', () => {
+	xit('should unrequire file upload', () => {
 
 		Run.checkAllRuns.click();
 		browser.waitForElement(Run.trash, config.app.waitTime, 'Run.trash');

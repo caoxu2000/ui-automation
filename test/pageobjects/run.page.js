@@ -50,7 +50,7 @@ class Run extends Page {
 	get trash() { return $('.fa-trash'); }
 	get confirmBtn() { return $('.footer-buttons > button:nth-of-type(2)'); }
 	get uploadIcon() { return $('button.upload-data-file'); }
-	get fileUploadInput() { return $$('input[type="file"]'); }
+	get fileUploadInput() { return $('input[type="file"]'); }
 	get modifyRun() {
 		return $('.rf-experiement-editor-panel-toolbar > span:nth-of-type(1)');
 	}
