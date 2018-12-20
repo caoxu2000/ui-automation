@@ -1,0 +1,6 @@
+Missing type parameter
+Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
+System info: host: 'xcao-riffyn', ip: '192.168.3.143', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.13.6', java.version: '9.0.4'
+Driver info: driver.version: unknown
+[firefox #0-0] Error: Remote end send an unknown status code.
+[firefox #0-0]     at actions([object Object]) - index.js:312:3

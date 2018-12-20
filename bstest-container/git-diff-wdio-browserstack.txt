@@ -1,0 +1,94 @@
+seluser@a633c1d89c3b:~/webdriverio-browserstack$ git diff
+diff --git a/conf/local.conf.js b/conf/local.conf.js
+index e3799c0..98d8fe7 100644
+--- a/conf/local.conf.js
++++ b/conf/local.conf.js
+@@ -1,12 +1,12 @@
+ var browserstack = require('browserstack-local');
+ 
+ exports.config = {
+-  user: process.env.BROWSERSTACK_USERNAME || 'BROWSERSTACK_USERNAME',
+-  key: process.env.BROWSERSTACK_ACCESS_KEY || 'BROWSERSTACK_ACC_KEY',
++  user: 'xucao2', 
++  key: 'mjdUxS1qqjQdnLQWFPxg',
+ 
+   updateJob: false,
+   specs: [
+-    './tests/specs/local_test.js'
++    './tests/specs/staging_test.js'
+   ],
+   exclude: [],
+ 
+@@ -21,14 +21,15 @@ exports.config = {
+   coloredLogs: true,
+   screenshotPath: './errorShots/',
+   baseUrl: '',
+-  waitforTimeout: 10000,
++  waitforTimeout: 60000,
+   connectionRetryTimeout: 90000,
+   connectionRetryCount: 3,
+   host: 'hub.browserstack.com',
+ 
+   framework: 'mocha',
+   mochaOpts: {
+-      ui: 'bdd'
++      ui: 'bdd',
++      timeout: 999999
+   },
+ 
+   // Code to start browserstack local before start of test
+diff --git a/conf/parallel.conf.js b/conf/parallel.conf.js
+index 0b51c0f..2a1a135 100644
+--- a/conf/parallel.conf.js
++++ b/conf/parallel.conf.js
+@@ -1,6 +1,6 @@
+ exports.config = {
+-  user: process.env.BROWSERSTACK_USERNAME || 'BROWSERSTACK_USERNAME',
+-  key: process.env.BROWSERSTACK_ACCESS_KEY || 'BROWSERSTACK_ACC_KEY',
++  user: 'xucao2', 
++  key: 'mjdUxS1qqjQdnLQWFPxg',
+ 
+   updateJob: false,
+   specs: [
+diff --git a/conf/single.conf.js b/conf/single.conf.js
+index ea66a4c..43bc8b1 100644
+--- a/conf/single.conf.js
++++ b/conf/single.conf.js
+@@ -1,10 +1,10 @@
+ exports.config = {
+-  user: process.env.BROWSERSTACK_USERNAME || 'BROWSERSTACK_USERNAME',
+-  key: process.env.BROWSERSTACK_ACCESS_KEY || 'BROWSERSTACK_ACC_KEY',
+-
++  user: 'xucao2', 
++  key: 'mjdUxS1qqjQdnLQWFPxg',
++  
+   updateJob: false,
+   specs: [
+-    './tests/specs/single_test.js'
++    './tests/specs/app_test.js'
+   ],
+   exclude: [],
+ 
+(END)
+
+
+seluser@a633c1d89c3b:~/webdriverio-browserstack$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+   modified:   conf/local.conf.js
+   modified:   conf/parallel.conf.js
+   modified:   conf/single.conf.js
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+   package-lock.json
+   tests/specs/app_test.js
+   tests/specs/qa_test.js
+   tests/specs/staging_test.js
+
+no changes added to commit (use "git add" and/or "git commit -a")

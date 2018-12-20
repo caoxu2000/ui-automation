@@ -1,0 +1,99 @@
+https://solidlinux.wordpress.com/2010/06/28/starting-crontab-in-cygwin/
+https://alvinalexander.com/blog/post/linux-unix/get-crontab-started-running-when-using-cygwin
+
+FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory
+ 1: node_module_register
+ 2: v8::internal::FatalProcessOutOfMemory
+ 3: v8::internal::FatalProcessOutOfMemory
+ 4: v8::internal::Factory::NewRawOneByteString
+ 5: v8_inspector::protocol::Schema::API::Domain::fromJSONString
+ 6: v8_inspector::protocol::Schema::API::Domain::fromJSONString
+ 7: v8_inspector::protocol::Schema::API::Domain::fromJSONString
+ 8: v8_inspector::protocol::Schema::API::Domain::fromJSONString
+ 9: v8_inspector::protocol::Schema::API::Domain::fromJSONString
+10: v8_inspector::protocol::Schema::API::Domain::fromJSONString
+11: v8_inspector::protocol::Schema::API::Domain::fromJSONString
+12: v8::internal::DeferredHandles::Iterate
+13: v8_inspector::protocol::Debugger::API::SearchMatch::fromJSONString
+14: v8_inspector::protocol::Debugger::API::SearchMatch::fromJSONString
+15: 0000015B4C786B21
+npm ERR! code ELIFECYCLE
+npm ERR! errno 3
+npm ERR! ui@1.0.0 winnz: `SET NODE_ENV=nz&& wdio wdio.conf.js >> test-results/test-results-nz-%DATE:~-4%-%DATE:~4,2%-%DATE:~7,2%.log "--spec" "test\specs\nzPerfTests.js"`
+npm ERR! Exit status 3
+npm ERR!
+npm ERR! Failed at the ui@1.0.0 winnz script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\Demo\AppData\Roaming\npm-cache\_logs\2018-08-05T11_33_08_135Z-debug.log
+
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'winnz',
+1 verbose cli   '--',
+1 verbose cli   '--spec',
+1 verbose cli   'test\\specs\\nzPerfTests.js' ]
+2 info using npm@5.6.0
+3 info using node@v8.11.2
+4 verbose run-script [ 'prewinnz', 'winnz', 'postwinnz' ]
+5 info lifecycle ui@1.0.0~prewinnz: ui@1.0.0
+6 info lifecycle ui@1.0.0~winnz: ui@1.0.0
+7 verbose lifecycle ui@1.0.0~winnz: unsafe-perm in lifecycle true
+8 verbose lifecycle ui@1.0.0~winnz: PATH: C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;C:\Users\Demo\Desktop\qa_vpc_benchmark\node_modules\.bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Program Files (x86)\Lenovo\FusionEngine;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Common Files\lenovo\easyplussdk\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Lenovo\Bluetooth Software\;C:\Program Files\Lenovo\Bluetooth Software\syswow64;C:\Program Files\nodejs\;C:\Program Files\PuTTY\;C:\WINDOWS\System32\OpenSSH\;C:\Users\Demo\AppData\Local\Microsoft\WindowsApps;C:\Users\Demo\AppData\Local\Programs\Git\cmd;C:\Users\Demo\AppData\Roaming\npm;
+9 verbose lifecycle ui@1.0.0~winnz: CWD: C:\Users\Demo\Desktop\qa_vpc_benchmark
+10 silly lifecycle ui@1.0.0~winnz: Args: [ '/d /s /c',
+10 silly lifecycle   'SET NODE_ENV=nz&& wdio wdio.conf.js >> test-results/test-results-nz-%DATE:~-4%-%DATE:~4,2%-%DATE:~7,2%.log "--spec" "test\\specs\\nzPerfTests.js"' ]
+11 silly lifecycle ui@1.0.0~winnz: Returned: code: 3  signal: null
+12 info lifecycle ui@1.0.0~winnz: Failed to exec winnz script
+13 verbose stack Error: ui@1.0.0 winnz: `SET NODE_ENV=nz&& wdio wdio.conf.js >> test-results/test-results-nz-%DATE:~-4%-%DATE:~4,2%-%DATE:~7,2%.log "--spec" "test\specs\nzPerfTests.js"`
+13 verbose stack Exit status 3
+13 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\index.js:285:16)
+13 verbose stack     at emitTwo (events.js:126:13)
+13 verbose stack     at EventEmitter.emit (events.js:214:7)
+13 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\lib\spawn.js:55:14)
+13 verbose stack     at emitTwo (events.js:126:13)
+13 verbose stack     at ChildProcess.emit (events.js:214:7)
+13 verbose stack     at maybeClose (internal/child_process.js:925:16)
+13 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
+14 verbose pkgid ui@1.0.0
+15 verbose cwd C:\Users\Demo\Desktop\qa_vpc_benchmark
+16 verbose Windows_NT 10.0.17134
+17 verbose argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "winnz" "--" "--spec" "test\\specs\\nzPerfTests.js"
+18 verbose node v8.11.2
+19 verbose npm  v5.6.0
+20 error code ELIFECYCLE
+21 error errno 3
+22 error ui@1.0.0 winnz: `SET NODE_ENV=nz&& wdio wdio.conf.js >> test-results/test-results-nz-%DATE:~-4%-%DATE:~4,2%-%DATE:~7,2%.log "--spec" "test\specs\nzPerfTests.js"`
+22 error Exit status 3
+23 error Failed at the ui@1.0.0 winnz script.
+23 error This is probably not a problem with npm. There is likely additional logging output above.
+24 verbose exit [ 3, true ]
+FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory
+ 1: node_module_register
+ 2: v8::internal::FatalProcessOutOfMemory
+ 3: v8::internal::FatalProcessOutOfMemory
+ 4: v8::internal::Factory::NewRawOneByteString
+ 5: v8_inspector::protocol::Schema::API::Domain::fromJSONString
+ 6: v8_inspector::protocol::Schema::API::Domain::fromJSONString
+ 7: v8_inspector::protocol::Schema::API::Domain::fromJSONString
+ 8: v8_inspector::protocol::Schema::API::Domain::fromJSONString
+ 9: v8_inspector::protocol::Schema::API::Domain::fromJSONString
+10: v8_inspector::protocol::Schema::API::Domain::fromJSONString
+11: v8_inspector::protocol::Schema::API::Domain::fromJSONString
+12: v8::internal::DeferredHandles::Iterate
+13: v8_inspector::protocol::Debugger::API::SearchMatch::fromJSONString
+14: v8_inspector::protocol::Debugger::API::SearchMatch::fromJSONString
+15: 0000025410006B21
+npm ERR! code ELIFECYCLE
+npm ERR! errno 3
+npm ERR! ui@1.0.0 winnz: `SET NODE_ENV=nz&& wdio wdio.conf.js >> test-results/test-results-nz-%DATE:~-4%-%DATE:~4,2%-%DATE:~7,2%.log "--spec" "test\specs\nzPerfTests.js"`
+npm ERR! Exit status 3
+npm ERR!
+npm ERR! Failed at the ui@1.0.0 winnz script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\Demo\AppData\Roaming\npm-cache\_logs\2018-08-08T10_38_38_287Z-debug.log

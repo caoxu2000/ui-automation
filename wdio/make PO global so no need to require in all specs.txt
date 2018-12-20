@@ -1,0 +1,7 @@
+global.pages = {}
+pages.loginPage = new LoginPage()
+
+BUT if you really want to mass import
+just create an index file inside your pageObject directory
+have that index file import everything
+and then import your index file

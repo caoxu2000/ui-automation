@@ -1,0 +1,1 @@
+You can't handle authentication popups with selenium. You need to access the url with the following form: http://username:passwork@applicationURL. If it is a redirect then I don't know how to do this. In general you have two options. Use a browser profile that is already authenticated with the page or which I would recommend, remove the auth barrier in your test environment.

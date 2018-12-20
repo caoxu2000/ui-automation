@@ -1,0 +1,16 @@
+FROM selenium/base:latest
+
+USER root
+
+RUN apt-get install curl
+RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo bash -
+RUN apt-get install -y nodejs \
+		vim \
+		git \
+		g++ build-essential
+
+RUN usermod -l jenkins seluser
+RUN usermod -d /home/jenkins -m jenkins
+USER jenkins
+RUN export HOME=/home/jenkins
+WORKDIR /home/jenkins

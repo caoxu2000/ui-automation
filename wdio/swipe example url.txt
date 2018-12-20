@@ -1,0 +1,18 @@
+https://gist.github.com/TuHuynhVan/a4c3aaa7e17d1702a0891d6465af0992
+
+
+class Swipe {
+
+    static swipeRight(selector) {
+
+        if (!selector) {
+            browser.touchAction([{action: 'press', x: 0, y: 100}, {action: 'moveTo', x: 200, y: 100}, 'release']);
+        } else {
+            let startX = $(selector).getLocation().x;
+            let endX = startX + 200;
+            let y = $(selector).getLocation().y;
+            browser.touchAction([{action: 'press', x: startX, y: y}, {action: 'moveTo', x: endX, y: y}, 'release']);
+        }
+    }
+}
+module.exports = Swipe;

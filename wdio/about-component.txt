@@ -1,0 +1,10 @@
+- Components are more closely related to resources than properties
+
+- A good example of a component would be a liquid resource that would have a component of a bottle and that bottle would have a property of volume
+
+- A resource is the parent, it can have as many components as is required. A resource and can also have as many properties as it needs and a component on a resource can have as many properties too
+Components and Properties must be used under a resource
+
+-  the component is grayed out in the bottom panel becoz it needed its own visual distinction from a resource
+
+$$('.sameClass')[0] get first element from the same class elements array

@@ -1,0 +1,2 @@
+All feature branch is based on master branch, which means that it is for the next release.
+2.2.x is on rc, and soon will be on prod branch once NZ gives us green light to deploy on their production

@@ -1,0 +1,103 @@
+==================================================================
+Number of specs: 110
+
+
+94 passing (1719.10s)
+1 skipped
+15 failing
+
+1) Add/remove tag of an experiment test should add the tag only to the selected experiment:
+An element could not be located on the page using the given search parameters (".remove-review-pill").
+running chrome
+Error: An element could not be located on the page using the given search parameters (".remove-review-pill").
+    at click() - index.js:312:3
+
+2) Add to Existing Collection should add a config to existing collection:
+element not visible
+running chrome
+Error: An element command could not be completed because the element is not visible on the page.
+    at elementIdClick("8") - click.js:20:22
+
+3) Clear Applied Cleaning Procedure Test should remove the applied cleaning rule and apply to a run:
+An element could not be located on the page using the given search parameters ("ul.-autocomplete-list > li").
+running chrome
+Error: An element could not be located on the page using the given search parameters ("ul.-autocomplete-list > li").
+    at click() - index.js:312:3
+
+4) Create a New Cleaning Procedure Test should create a new cleaning rule and apply to a run:
+An element could not be located on the page using the given search parameters ("ul.-autocomplete-list > li").
+running chrome
+Error: An element could not be located on the page using the given search parameters ("ul.-autocomplete-list > li").
+    at click() - index.js:312:3
+
+5) Data Display Filter Test should filter data value according to the selection from dropdown list:
+compression_data option in drop down element was not loaded
+running chrome
+Error: compression_data option in drop down element was not loaded
+    at elements() - isExisting.js:46:17
+    at isExisting() - index.js:263:37
+    at waitUntil(<Function>, "3000", "compression_data option in drop down element was not loaded") - index.js:263:37
+    at element("option[value="table:compression_data"]") - index.js:312:3
+
+6) Delete a property under a Resource Type Test should delete the property under the resource type:
+An element could not be located on the page using the given search parameters ("ul.-autocomplete-list > li").
+running chrome
+Error: An element could not be located on the page using the given search parameters ("ul.-autocomplete-list > li").
+    at click() - index.js:312:3
+
+7) Disconnect connected Runs between connected Steps Test should disconnect runs between steps:
+An element could not be located on the page using the given search parameters ("ul.-autocomplete-list > li").
+running chrome
+Error: An element could not be located on the page using the given search parameters ("ul.-autocomplete-list > li").
+    at click() - index.js:312:3
+
+8) Edit DB Query Test should update the DB query and execute with no error:
+element not visible
+running chrome
+Error: An element command could not be completed because the element is not visible on the page.
+    at elementIdClick("18") - click.js:20:22
+
+9) Edit Cleaning Procedure Test should update cleaning procedure and apply to a run:
+An element could not be located on the page using the given search parameters (".close-title").
+running chrome
+Error: An element could not be located on the page using the given search parameters (".close-title").
+    at click() - index.js:312:3
+
+10) Export Data From All Experiments Test should export all pH values from all experiments under that process:
+An element could not be located on the page using the given search parameters ("ul.-autocomplete-list > li").
+running chrome
+Error: An element could not be located on the page using the given search parameters ("ul.-autocomplete-list > li").
+    at click() - index.js:312:3
+
+11) Import File with empty columns, rows, and extra header rows Test should import the file correctly with no error:
+An element could not be located on the page using the given search parameters ("ul.-autocomplete-list > li").
+running chrome
+Error: An element could not be located on the page using the given search parameters ("ul.-autocomplete-list > li").
+    at click() - index.js:312:3
+
+12) Manual Data Entry Test should import the manual entry to the selected data field:
+element not visible
+running chrome
+Error: An element command could not be completed because the element is not visible on the page.
+    at elementIdClick("13") - click.js:20:22
+
+13) Propagate a Property to Downstream Step Test should add property to the downstream next step default resource type:
+An element could not be located on the page using the given search parameters ("ul.-autocomplete-list > li").
+running chrome
+Error: An element could not be located on the page using the given search parameters ("ul.-autocomplete-list > li").
+    at click() - index.js:312:3
+
+14) Remove from Existing Collection should remove the config from existing collection:
+element not visible
+running chrome
+Error: An element command could not be completed because the element is not visible on the page.
+    at elementIdClick("8") - click.js:20:22
+
+15) Save Cell Value in Run Table should save the cell value after tabbed out or refresh whole page:
+element not visible
+running chrome
+Error: An element command could not be completed because the element is not visible on the page.
+    at elementIdClick("8") - click.js:20:22
+
+
+Tests Complete!

@@ -1,0 +1,16 @@
+/Users/xcao/Desktop/qa-ui-functional $ npm install
+
+> fibers@2.0.0 install /Users/xcao/Desktop/qa-ui-functional/node_modules/fibers
+> node build.js || nodejs build.js
+
+  CXX(target) Release/obj.target/fibers/src/fibers.o
+../src/fibers.cc:318:3: warning: ignoring return value of function declared with 'warn_unused_result' attribute
+      [-Wunused-result]
+                object->SetAccessor(isolate->GetCurrentContext(), name, (AccessorNameGetterCallback)getter, (A...
+                ^~~~~~~~~~~~~~~~~~~
+1 warning generated.
+  CXX(target) Release/obj.target/fibers/src/coroutine.o
+  CC(target) Release/obj.target/fibers/src/libcoro/coro.o
+  SOLINK_MODULE(target) Release/fibers.node
+Installed in `/Users/xcao/Desktop/qa-ui-functional/node_modules/fibers/bin/darwin-x64-59/fibers.node`
+npm WARN ui@1.0.0 No repository field.

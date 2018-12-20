@@ -1,0 +1,5 @@
+brew install yarn (npm -i -g yarn)
+Download and install docker and start it
+cd docker-files/bin
+./build.sh --start
+yarn start

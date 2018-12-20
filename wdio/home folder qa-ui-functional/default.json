@@ -1,0 +1,24 @@
+{
+	"app": {
+		"url": "http://localhost:3000/",
+		"admin": {
+			"username": "riffyn.test.1",
+			"password": "54321.Quality"
+		},
+		"non_admin": {
+			"username": "riffyn.test.2",
+			"password": "54321.Quality"
+		},
+		"waitTime": "3000",
+		"downloadWaitTime": "8000",
+		"dbConfigLoadTime": "20000",
+		"winWaitTime": "12000",
+		"downloadActual": "../../../../Downloads/E001_First Step_Execute.csv",
+		"downloadPlanned": "../../../../Downloads/E001_First Step_Plan.csv",
+		"downloadedIMG": "../../../../Downloads/RiffynMap.png",
+		"expectedIMG": "../../data/RiffynMap.png",
+		"exportFromSingle": "../../../../Downloads/exportFromSingleExperimentTest.csv",
+		"exportFromAll": "../../../../Downloads/exportFromAllExperimentsTest.csv",
+		"uploadFile": "../data/8runs.xlsx"
+	}
+}

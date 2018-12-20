@@ -1,0 +1,7 @@
+docker build ./ (build the docker image from the Dockerfile in ./)
+docker build -t jenkins-slave-qa . (tag the image name to be jenkins-slave-qa)
+docker tag jenkins-slave-qa riffyninc/jenkins-slave-qa:x.x(tag it to a version on riffyn docker hub)
+docker push riffyninc/jenkins-slave-qa:x.x (publish to docker hub)
+
+export BROWSERSTACK_USERNAME=xucao2
+export BROWSERSTACK_ACCESS_KEY=mjdUxS1qqjQdnLQWFPxg

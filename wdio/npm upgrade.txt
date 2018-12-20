@@ -1,0 +1,2 @@
+Update available 5.8.0 → 6.0.0    │
+   │     Run npm i -g npm to update 
